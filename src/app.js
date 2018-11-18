@@ -1,3 +1,6 @@
+import 'babel-polyfill';
+import 'isomorphic-fetch';
+import 'nodelist-foreach-polyfill';
 import {SourcesList} from './components/SourcesList';
 import {NewsList} from './components/NewsList';
 import {Utils} from './utils/utils';
@@ -18,15 +21,17 @@ class App {
         const {apiKey} = Constants;
         const sourcesContainer = document.querySelector('.container_sources');
         const newsContainer = document.querySelector('.container_news');
+        const sourcesList = new SourcesList(sourcesContainer);
+        const newsList = new NewsList(newsContainer);
 
-        SourcesList.getSources(Utils.getSourcesListUrl(apiKey), sourcesContainer);
+        sourcesList.getSources(Utils.getSourcesListUrl(apiKey));
 
-        sourcesContainer.addEventListener('click', ({target}) => {
+        sourcesContainer.addEventListener('click', async ({target}) => {
             if (target instanceof HTMLButtonElement) {
                 const {id, innerHTML} = target;
+                const news = await newsList.getNews(Utils.getSourceNewsUrl(id, apiKey));
                 this.setActiveButton(target, sourcesContainer.querySelectorAll('button'));
-                NewsList.getNews(Utils.getSourceNewsUrl(id, apiKey), newsContainer)
-                    .then(news => this.setHeaderInfo(innerHTML, news.length));
+                this.setHeaderInfo(innerHTML, news.length);
             }
         });
     }
