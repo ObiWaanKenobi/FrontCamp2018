@@ -1,10 +1,13 @@
-# FrontCamp_es2015
+# FrontCamp JS_core 
 
-Development server
+## GitHub Pages 
 
-Run `npm run start` for a dev server. Navigate to http://localhost:8080/. The app will automatically reload if you change any of the source files.
+Navigate to https://obiwaankenobi.github.io/. 
 
+## Development server 
 
-Build
+Run `npm run start` for a dev server. Navigate to http://localhost:8080/. The app will automatically reload if you change any of the source files. 
 
-Run `npm run build` to build the project. The build artifacts will be stored in the dist/ directory.
+## Build 
+
+Run `npm run build` to build the project. The build artifacts will be stored in the /dist directory.
