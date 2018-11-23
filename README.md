@@ -2,7 +2,7 @@
 
 ## GitHub Pages 
 
-Navigate to https://obiwaankenobi.github.io/. 
+Navigate to https://obiwaankenobi.github.io/FrontCamp2018/. 
 
 ## Development server 
 
