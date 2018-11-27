@@ -1,5 +1,6 @@
 import {Utils} from '../utils/utils';
 import {News} from './News';
+import '../styles/news.scss';
 
 class NewsList {
     constructor(newsContainer) {

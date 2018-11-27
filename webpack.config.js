@@ -5,13 +5,14 @@ module.exports = {
     entry: {
         main: [
             './src/app.js',
-            './src/styles/style.scss',
+            './src/styles/main.scss',
         ],
     },
     output: {
-        filename: 'bundle.js',
-        path: `${__dirname}/dist`,
-        publicPath: '/',
+        filename: '[name].js',
+        chunkFilename: '[name].js',
+        path: `${__dirname}/dist/`,
+        publicPath: 'dist/',
     },
     devtool: 'inline-source-map',
     module: {
@@ -19,12 +20,12 @@ module.exports = {
             // {
             //     test: /\.js$/,
             //     exclude: /node_modules/,
-            //     use: ['eslint-loader']
+            //     use: ['eslint-loader'],
             // },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: ['babel-loader'],
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -45,6 +46,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
+            chunkFilename: '[name].css',
         }),
     ],
 };

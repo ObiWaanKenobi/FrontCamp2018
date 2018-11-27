@@ -2,7 +2,6 @@ import 'babel-polyfill';
 import 'isomorphic-fetch';
 import 'nodelist-foreach-polyfill';
 import {SourcesList} from './components/SourcesList';
-import {NewsList} from './components/NewsList';
 import {Utils} from './utils/utils';
 import Constants from './utils/constants';
 
@@ -22,13 +21,14 @@ class App {
         const sourcesContainer = document.querySelector('.container_sources');
         const newsContainer = document.querySelector('.container_news');
         const sourcesList = new SourcesList(sourcesContainer);
-        const newsList = new NewsList(newsContainer);
 
         sourcesList.getSources(Utils.getSourcesListUrl(apiKey));
 
         sourcesContainer.addEventListener('click', async ({target}) => {
             if (target instanceof HTMLButtonElement) {
                 const {id, innerHTML} = target;
+                const {NewsList} = await import(/* webpackChunkName: "newsList" */'./components/NewsList.js');
+                const newsList = new NewsList(newsContainer);
                 const news = await newsList.getNews(Utils.getSourceNewsUrl(id, apiKey));
                 this.setActiveButton(target, sourcesContainer.querySelectorAll('button'));
                 this.setHeaderInfo(innerHTML, news.length);

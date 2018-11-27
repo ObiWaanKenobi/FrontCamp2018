@@ -2,7 +2,7 @@
   "name": "front-camp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
@@ -11,17 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ObiWaanKenobi/front-camp.git"
+    "url": "git+https://github.com/ObiWaanKenobi/FrontCamp2018"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ObiWaanKenobi/front-camp/issues"
+    "url": "https://github.com/ObiWaanKenobi/FrontCamp2018/issues"
   },
-  "homepage": "https://github.com/ObiWaanKenobi/front-camp#readme",
+  "homepage": "https://github.com/ObiWaanKenobi/FrontCamp2018#readme",
   "devDependencies": {
     "@babel/core": "^7.1.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "babel-loader": "^8.0.4",
     "babel-polyfill": "^6.26.0",
