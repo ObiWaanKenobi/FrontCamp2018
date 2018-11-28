@@ -1,5 +1,7 @@
 import Constants from '../utils/constants';
 import {Utils} from '../utils/utils';
+// Enables IE11 support of template tag
+import '../assets/template';
 
 class News {
     static renderNews({

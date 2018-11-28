@@ -13,6 +13,8 @@
         "object-curly-newline": 0,
         "import/no-extraneous-dependencies": 0,
         "linebreak-style": 0,
+        "func-names": 0,
+        "no-console": 0,
         "comma-dangle": ["error", "always-multiline"]
     },
     "globals": {

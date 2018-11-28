@@ -6,6 +6,7 @@ module.exports = {
         main: [
             './src/app.js',
             './src/styles/main.scss',
+            './src/utils/testLoaderData.json',
         ],
     },
     output: {
@@ -14,14 +15,16 @@ module.exports = {
         path: `${__dirname}/dist/`,
         publicPath: 'dist/',
     },
-    devtool: 'inline-source-map',
+    resolveLoader: {
+        modules: ['node_modules', `${__dirname}/src/loaders`],
+    },
     module: {
         rules: [
-            // {
-            //     test: /\.js$/,
-            //     exclude: /node_modules/,
-            //     use: ['eslint-loader'],
-            // },
+            {
+                test: /\.json$/,
+                exclude: /node_modules/,
+                use: ['omit-numbers-json-loader'],
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -29,6 +32,7 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
+                exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
@@ -37,12 +41,10 @@ module.exports = {
             },
         ],
     },
-    devServer: {
-        open: true,
-    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: `${__dirname}/index.html`,
+            filename: '../index.html',
+            template: `${__dirname}/src/index.html`,
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

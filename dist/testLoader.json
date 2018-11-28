@@ -1,0 +1,13 @@
+{
+  "name": "Jack",
+  "surname": "Brown",
+  "birthDate": "16.05.1990",
+  "skills": "JS",
+  "testArray": [
+    "a",
+    "b"
+  ],
+  "testObject": {
+    "string": "string"
+  }
+}
