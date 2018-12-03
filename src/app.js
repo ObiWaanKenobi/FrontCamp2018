@@ -3,6 +3,7 @@ import 'isomorphic-fetch';
 import 'nodelist-foreach-polyfill';
 import {SourcesList} from './components/SourcesList';
 import {Utils} from './utils/utils';
+import {ErrorPopup} from './error-handler/ErrorPopup';
 import Constants from './utils/constants';
 
 class App {
@@ -22,18 +23,24 @@ class App {
         const newsContainer = document.querySelector('.container_news');
         const sourcesList = new SourcesList(sourcesContainer);
 
-        sourcesList.getSources(Utils.getSourcesListUrl(apiKey));
+        sourcesList.getSources(Utils.getSourcesListUrl(apiKey))
+            .then(() => {
+                sourcesContainer.addEventListener('click', async ({target}) => {
+                    if (target instanceof HTMLButtonElement) {
+                        const {id, innerHTML} = target;
+                        const {NewsList} = await import(/* webpackChunkName: "newsList" */'./components/NewsList.js');
+                        const newsList = new NewsList(newsContainer);
+                        const news = await newsList.getNews(Utils.getSourceNewsUrl(id, apiKey));
+                        this.setActiveButton(target, sourcesContainer.querySelectorAll('button'));
+                        this.setHeaderInfo(innerHTML, news.length);
+                    }
+                    else {
+                        const a = ErrorPopup.getInstance().show();
+                        console.log('a', a);
+                    }
+                });
 
-        sourcesContainer.addEventListener('click', async ({target}) => {
-            if (target instanceof HTMLButtonElement) {
-                const {id, innerHTML} = target;
-                const {NewsList} = await import(/* webpackChunkName: "newsList" */'./components/NewsList.js');
-                const newsList = new NewsList(newsContainer);
-                const news = await newsList.getNews(Utils.getSourceNewsUrl(id, apiKey));
-                this.setActiveButton(target, sourcesContainer.querySelectorAll('button'));
-                this.setHeaderInfo(innerHTML, news.length);
-            }
-        });
+            });
     }
 }
 

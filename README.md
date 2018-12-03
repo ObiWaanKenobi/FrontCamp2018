@@ -1,4 +1,4 @@
-# FrontCamp JS_core 
+# FrontCamp_2018
 
 ## GitHub Pages 
 

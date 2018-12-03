@@ -21,6 +21,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(html)$/,
+                use: ['html-loader'],
+            },
+            {
                 test: /\.json$/,
                 exclude: /node_modules/,
                 use: ['omit-numbers-json-loader'],
