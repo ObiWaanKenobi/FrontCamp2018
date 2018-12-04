@@ -6,30 +6,25 @@
         <link href="dist/main.css" rel="stylesheet">
     </head>
     <body>
-        <header class="header">
-            <div class="header_title">NEWS PORTAL</div>
-            <div class="header_source"></div>
-            <div class="header_amount"></div>
-        </header>
-        <div class="container">
-            <aside class="container_sources"></aside>
-            <main class="container_news">
-                <div class="initial-content">
-                    <h1>Please, choose the news source</h1>
-                </div>
-            </main>
-        </div>
-        <footer class="footer">2018, Powered by <a href="https://newsapi.org/">News API</a></footer>
-        
-        <template id="news-template">
-            <div class="news">
-                <h1 class="news_title"></h1>
-                <div class="news_publishedAt"></div>
-                <h3 class="news_description"></h3>
-                <img class="news_urlToImage">
-                <a class="news_url" target="_blank">Read more</a>
+        <div id="app-container">
+            <header class="header">
+                <div class="header_title">NEWS PORTAL</div>
+                <div class="header_source"></div>
+                <div class="header_amount"></div>
+            </header>
+            <div class="container">
+                <aside class="container_sources"></aside>
+                <main class="container_news">
+                    <div class="initial-content">
+                        <h1>Please, choose the news source</h1>
+                    </div>
+                </main>
             </div>
-        </template>
+            <footer class="footer">
+                2018, Powered by 
+                <a href="https://newsapi.org/" target="_blank" rel="noopener">News API</a>
+            </footer>
+        </div>
         <script type="text/javascript" src="dist/main.js"></script>
     </body>
 </html>

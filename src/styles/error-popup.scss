@@ -1,8 +1,4 @@
-.error-popup {
-    .hidden {
-        display: none;
-    }
-    
+.error-popup {    
     z-index: 3;
     width: 100%;
     min-height: 100%;
@@ -29,8 +25,8 @@
         background-color: #039be5;
         color: #fff;
         font-weight: bold;
+        font-size: 16px;
         line-height: 60px;
-
     }
 
     &_message {
@@ -39,7 +35,7 @@
 
     &_button {
         position: relative;
-        top: 180px;
+        margin-top: 160px;
         left: 460px;
         height: 40px;
         width: 80px;
@@ -49,4 +45,8 @@
         border-radius: 2px;
         font-size: 14px;
     }
+}
+
+.hidden {
+    display: none;
 }

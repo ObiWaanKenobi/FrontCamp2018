@@ -6,7 +6,7 @@ module.exports = {
         main: [
             './src/app.js',
             './src/styles/main.scss',
-            './src/utils/testLoaderData.json',
+            './src/utils/loaders/testLoaderData.json',
         ],
     },
     output: {
@@ -16,7 +16,7 @@ module.exports = {
         publicPath: 'dist/',
     },
     resolveLoader: {
-        modules: ['node_modules', `${__dirname}/src/loaders`],
+        modules: ['node_modules', `${__dirname}/src/utils/loaders`],
     },
     module: {
         rules: [
