@@ -1,0 +1,14 @@
+Date: [2019-01-19T22:19:36.670Z] info: HTTP GET /
+Date: [2019-01-19T22:19:36.688Z] info: HTTP GET /stylesheets/style.css
+Date: [2019-01-19T22:19:45.015Z] info: HTTP GET /news
+Date: [2019-01-19T22:22:23.189Z] info: HTTP GET /news/3213
+Date: [2019-01-19T22:22:40.517Z] info: HTTP POST /news
+Date: [2019-01-19T22:22:47.281Z] info: HTTP DELETE /news
+Date: [2019-01-19T22:22:52.249Z] info: HTTP DELETE /news/123
+Date: [2019-01-19T22:22:56.040Z] info: HTTP PUT /news/123
+Date: [2019-01-19T22:23:02.585Z] info: HTTP GET /news/67867
+Date: [2019-01-20T10:16:23.169Z] info: HTTP GET /
+Date: [2019-01-20T10:16:23.200Z] info: HTTP GET /stylesheets/style.css
+Date: [2019-01-20T10:16:23.346Z] info: HTTP GET /favicon.ico
+Date: [2019-01-20T10:16:29.039Z] info: HTTP GET /news
+Date: [2019-01-20T10:16:33.511Z] info: HTTP GET /news/123
