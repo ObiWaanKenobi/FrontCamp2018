@@ -6,6 +6,7 @@
 
 const debug = require('debug')('news-app:server');
 const http = require('http');
+const mongoose = require('mongoose');
 
 const app = require('../app');
 /**
@@ -46,7 +47,14 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+mongoose.connect('mongodb://localhost:27017/frontcamp', {useNewUrlParser: true}, (err) => {
+  if (err) {
+    return console.log(err);
+  }
+  server.listen(port, () => {
+    console.log(`App started on port ${port}`);
+  });
+});
 
 /**
  * Event listener for HTTP server "error" event.

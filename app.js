@@ -1,11 +1,15 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
+const session = require('express-session');
 const httpErrors = require('http-errors');
 const logger = require('morgan');
 const { format: { combine, timestamp, printf }, transports } = require('winston');
 const expressWinston = require('express-winston');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
 const indexRouter = require('./routes/index');
 const newsRouter = require('./routes/news');
@@ -42,6 +46,24 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session
+app.use(session({
+  secret: 'secrettexthere',
+  saveUninitialized: true,
+  resave: true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// passport config
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+passport.authenticate('facebook');
+
+// routers
 app.use('/', indexRouter);
 app.use('/news', newsRouter);
 

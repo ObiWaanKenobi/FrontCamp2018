@@ -1,27 +1,22 @@
 const { Router } = require('express');
-const news = require('../db/newsSource');
+const NewsController = require('../controllers/NewsController');
 
 const router = Router();
-const newsString = JSON.stringify(news, null, 2);
+const controller = new NewsController();
 
-router.get('/', (req, res) => {
-  res.send(newsString);
-});
+const checkIsAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(400).json({
+    message: 'access denied'
+  });
+};
 
-router.get('/:id', (req, res) => {
-  res.send(newsString);
-});
-
-router.post('/', (req, res) => {
-  res.send(newsString);
-});
-
-router.put('/:id', (req, res) => {
-  res.send(newsString);
-});
-
-router.delete('/:id', (req, res) => {
-  res.send(newsString);
-});
+router.get('/', controller.findAll);
+router.get('/:id', controller.findById);
+router.post('/', controller.create);
+router.put('/:id', checkIsAuthenticated, controller.update);
+router.delete('/:id', checkIsAuthenticated, controller.delete);
 
 module.exports = router;
